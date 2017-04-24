@@ -22,9 +22,9 @@ public:
     void save(std::ostream& ost);
 	void load(std::istream& ist);
 private:
-double power_available;
-double max_energy;
-double weight;
+double power_available=0;
+double max_energy=0;
+double weight=0;
 };
 
 

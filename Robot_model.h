@@ -11,9 +11,21 @@
 
 class Robot_model{
 public:
-   Robot_model(Arm arm_o, Battery battery_o,Head head_o, Locomotor locomotor_o, Torso torso_o, int model_num):
-   arm(arm_o), battery(battery_o), head(head_o), locomotor(locomotor_o),torso(torso_o), robot_model_num(model_num){}
-Robot_model(){}
+   Robot_model(Arm arm_o, Battery battery_o_1,Head head_o, Locomotor locomotor_o, Torso torso_o, int model_num):
+   arm1(arm_o), battery1(battery_o_1), head(head_o), locomotor(locomotor_o),torso(torso_o), robot_model_num(model_num){}
+   Robot_model(Arm arm_o,  Battery battery_o_1, Battery battery_o_2, Head head_o, Locomotor locomotor_o, Torso torso_o, int model_num) :
+	   arm1(arm_o), battery1(battery_o_1), battery2(battery_o_2), head(head_o), locomotor(locomotor_o), torso(torso_o), robot_model_num(model_num) {}
+   Robot_model(Arm arm_o, Battery battery_o_1, Battery battery_o_2, Battery battery_o_3, Head head_o, Locomotor locomotor_o, Torso torso_o, int model_num) :
+	   arm1(arm_o), battery1(battery_o_1), battery2(battery_o_2), battery3(battery_o_3), head(head_o), locomotor(locomotor_o), torso(torso_o), robot_model_num(model_num) {}
+
+   Robot_model(Arm arm_o, Arm arm_o_1, Battery battery_o_1, Head head_o, Locomotor locomotor_o, Torso torso_o, int model_num) :
+	   arm1(arm_o), arm2(arm_o_1),battery1(battery_o_1), head(head_o), locomotor(locomotor_o), torso(torso_o), robot_model_num(model_num) {}
+   Robot_model(Arm arm_o, Arm arm_o_1, Battery battery_o_1, Battery battery_o_2, Head head_o, Locomotor locomotor_o, Torso torso_o, int model_num) :
+	   arm1(arm_o), arm2(arm_o_1), battery1(battery_o_1), battery2(battery_o_2), head(head_o), locomotor(locomotor_o), torso(torso_o), robot_model_num(model_num) {}
+   Robot_model(Arm arm_o, Arm arm_o_1, Battery battery_o_1, Battery battery_o_2, Battery battery_o_3, Head head_o, Locomotor locomotor_o, Torso torso_o, int model_num) :
+	   arm1(arm_o), arm2(arm_o_1), battery1(battery_o_1), battery2(battery_o_2), battery3(battery_o_3), head(head_o), locomotor(locomotor_o), torso(torso_o), robot_model_num(model_num) {}
+
+  Robot_model(){}
  ~Robot_model(){}
    double cost();
    double max_speed();
@@ -27,6 +39,8 @@ Robot_model(){}
    void parts_power();
    void get_battery_life();
    void set_max_speed();
+   void set_arm_no(int arm_val);
+   void set_battery_no(int battery_val);
    /*void get_model_arm();
    void get_model_battery();
    void get_model_torso();
@@ -40,8 +54,9 @@ double cost_of_parts;
 bool power_limited;
 double battery_life;
 double model_max_speed;
-Arm arm;
-Battery battery;
+int arm_no, battery_no;
+Arm arm1, arm2;
+Battery battery1, battery2, battery3;
 Torso torso;
 Head head;
 Locomotor locomotor;

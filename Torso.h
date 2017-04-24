@@ -13,8 +13,8 @@ public:
     ~Torso(){}
     int get_battery_compartments() const;
     int get_max_arms() const;
-    void get_parts();
-    void view_parts();
+    void Torso::get_parts();
+    void Torso::view_parts();
     void set_weight(double part_weight);
     double get_weight();
      double get_cost() override;

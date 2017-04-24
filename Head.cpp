@@ -32,7 +32,6 @@ return weight;
 }
 
 double Head::get_cost(){
-double cost_1=cost;
-return cost_1;
+	return cost;
 }
 

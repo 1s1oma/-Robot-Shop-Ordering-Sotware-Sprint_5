@@ -13,16 +13,16 @@ public:
     }
     ~Arm(){}
     double get_max_power() const;
-    void get_parts() override;
-    void view_parts() override;
+    void Arm::get_parts() override;
+    void Arm::view_parts() override;
     void save(std::ostream& ost);
     void load(std::istream& ist);
     void set_weight(double part_weight);
     double get_weight();
     double get_cost() override;
     private:
-    double max_power;
-    double weight;
+    double max_power=0;
+    double weight=0;
 };
 
 #endif // ARM_H_INCLUDED

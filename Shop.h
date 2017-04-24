@@ -33,6 +33,7 @@ void open(std::string filename);
 private:
 std::vector<Robot_model> models;
 std::vector<std::unique_ptr<Robot_part>> robot_parts;
+//std::vector<Robot_part> robot_parts;
 std::vector <Customer> customers;
 std::vector <Sales_associate> sales_associates;
 std::vector <Order> orders;

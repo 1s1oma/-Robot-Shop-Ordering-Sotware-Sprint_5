@@ -7,7 +7,6 @@ cout<<robot_parts.name<<robot_parts.model_number<<robot_parts.cost<<robot_parts.
 
 void Shop::create_new_robot_part(Robot_part &robot_part_o){
 	robot_parts.emplace_back(&robot_part_o);
-	robot_parts[0]->view_parts();
 }
 
 void Shop::create_new_robot_model(Robot_model robot_model_o){
@@ -56,20 +55,20 @@ int Shop::number_of_orders(){
 return orders.size();
 }
 
-void Shop::list_models(){
-int num;
-  for(int i=0; i<models.size();i++){
-  std::cout<<"Robot Model ("<<models[i].get_model_num()<<")"<<std::endl;
-  }
+void Shop::list_models() {
+	int num;
+	for (int i = 0; i < models.size(); i++) {
+		std::cout << "Robot Model (" << models[i].get_model_num() << ")" << std::endl;
+	}
 
-  std::cout <<"Enter model number to view parts"<<std::endl; std::cin >> num;
-  for(int i=0; i<models.size();i++){
-  if(num==models[i].get_model_num())
-  models[i].get_parts();
-  }
+	std::cout << "Enter model number to view parts" << std::endl; std::cin >> num;
+	for (int i = 0; i < models.size(); i++) {
+		if (num == models[i].get_model_num()){}
+			//  models[i].get_parts(); FIX
+	}
 }
-Robot_model Shop::find_model(int num_1){
 
+Robot_model Shop::find_model(int num_1){
 for(int i=0; i<models.size();i++){
   if(num_1==models[i].get_model_num())
   return models[i];
@@ -78,8 +77,8 @@ for(int i=0; i<models.size();i++){
 
 void Shop::shop_to_string(int index){
 //string shop = robot_parts[index].to_string();
-robot_parts[index]->view_parts();
-models[index].get_parts();
+//robot_parts[index]->view_parts(); FIX
+//models[index].get_parts(); FIX
 std::cout << customers[index].to_string()<<std::endl
 << sales_associates[index].to_string()<<std::endl;
 orders[index].to_string();
@@ -93,7 +92,7 @@ for(int i=0;i<models.size();i++){
 models[i].save(ofs);
 }
 for(int i=0;i<robot_parts.size();i++){
-robot_parts[i]->save(ofs);
+//robot_parts[i]->save(ofs); FIX
 }
 
 for(int i=0;i<customers.size();i++){
@@ -106,7 +105,7 @@ for(int i=0;i<orders.size();i++){
 orders[i].save(ofs);
 }
 }
-
+/*
 void Shop::open(std::string filename) {
 	std::ifstream ifs{ filename, std::ios_base::in };
 	std::string label;
@@ -149,11 +148,11 @@ void Shop::open(std::string filename) {
 			orders.push_back(order_1);
 		}
 	}
-	/*robot_parts[4]->view_parts();
+	robot_parts[4]->view_parts();
 	robot_parts[3]->view_parts();
 	robot_parts[2]->view_parts();
 	robot_parts[1]->view_parts();
-	robot_parts[0]->view_parts();*/
-}
+	robot_parts[0]->view_parts();
+}*/
 
 

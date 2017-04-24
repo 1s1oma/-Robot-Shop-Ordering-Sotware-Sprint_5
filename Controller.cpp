@@ -1,28 +1,74 @@
 #include "Controller.h"
-#include <iostream>
+
+int battery_compartments, max_arms;
 
 void Controller::controller_get_arm(){
 std::string name, description,image_filename;
-int model_number;double cost, max_power, weight_1;
+int model_number; double cost, max_power;
 
 std::cout<<view.get_arm();
-std::cin>>max_power>>name>>model_number>>cost>>description>>image_filename>>weight_1;
-Arm arm_1(max_power,name,model_number,cost,description,image_filename);
-//shop.create_new_robot_part(Arm(max_power,name,model_number,cost,description,image_filename));
-arm_1.set_weight(weight_1);arm = arm_1;
-shop.create_new_robot_part(arm_1);
+if (max_arms == 1) {
+	std::cin >> max_power >> name >> model_number >> cost >> description >> image_filename;
+	Arm arm(max_power, name, model_number, cost, description, image_filename);
+	arm_1 = arm;
+	shop.create_new_robot_part(arm_1);
+}
+else if (max_arms == 2) {
+	std::cin >> max_power >> name >> model_number >> cost >> description >> image_filename;
+	Arm arm(max_power, name, model_number, cost, description, image_filename);
+	arm_1 = arm;
+	shop.create_new_robot_part(arm_1);
+
+	std::cout << std::endl<<"Enter second Arm" << std::endl;
+	std::cin >> max_power >> name >> model_number >> cost >> description >> image_filename;
+	Arm arm_o(max_power, name, model_number, cost, description, image_filename);
+	arm_2 = arm_o;
+	shop.create_new_robot_part(arm_2);
+}
 }
 
 void Controller::controller_get_battery(){
 std::string name, description,image_filename;
-int model_number;double cost, weight_1, max_energy,power_available;
+int model_number, max_energy;double cost,power_available;
 
 std::cout<<view.get_battery();
-std::cin>>power_available>>max_energy>>name>>model_number>>cost>>description>>image_filename>>weight_1;
-Battery battery_1(power_available,max_energy,name,model_number,cost,description,image_filename);
-//shop.create_new_robot_part(Battery(power_available,max_energy,name,model_number,cost,description,image_filename));
-battery_1.set_weight(weight_1);battery=battery_1;
-shop.create_new_robot_part(battery_1);
+
+if (battery_compartments == 1) {
+	std::cin >> power_available >> max_energy >> name >> model_number >> cost >> description >> image_filename;
+	Battery battery(power_available, max_energy, name, model_number, cost, description, image_filename);
+	battery_1 = battery;
+}
+else if (battery_compartments == 2) {
+	std::cin >> power_available >> max_energy >> name >> model_number >> cost >> description >> image_filename;
+	Battery battery(power_available, max_energy, name, model_number, cost, description, image_filename);
+	battery_1 = battery;
+	shop.create_new_robot_part(battery_1);
+
+	std::cout << std::endl<<"Enter second Battery" << std::endl;
+	std::cin >> power_available >> max_energy >> name >> model_number >> cost >> description >> image_filename;
+	Battery battery_o(power_available, max_energy, name, model_number, cost, description, image_filename);
+	battery_2 = battery_o;
+	shop.create_new_robot_part(battery_2);
+}
+
+else if (battery_compartments == 3) {
+	std::cin >> power_available >> max_energy >> name >> model_number >> cost >> description >> image_filename;
+	Battery battery(power_available, max_energy, name, model_number, cost, description, image_filename);
+	battery_1 = battery;
+	shop.create_new_robot_part(battery_1);
+
+	std::cout << std::endl<<"Enter second Battery" << std::endl;
+	std::cin >> power_available >> max_energy >> name >> model_number >> cost >> description >> image_filename;
+	Battery battery_o(power_available, max_energy, name, model_number, cost, description, image_filename);
+	battery_2 = battery_o;
+	shop.create_new_robot_part(battery_2);
+
+	std::cout << std::endl<<"Enter third Battery" << std::endl;
+	std::cin >> power_available >> max_energy >> name >> model_number >> cost >> description >> image_filename;
+	Battery battery_1_o(power_available, max_energy, name, model_number, cost, description, image_filename);
+	battery_3 = battery_1_o;
+	shop.create_new_robot_part(battery_3);
+}
 }
 
 void Controller::controller_get_head(){
@@ -51,7 +97,9 @@ shop.create_new_robot_part(locomotor_1);
 
 void Controller::controller_get_torso(){
 std::string name, description,image_filename;
-int model_number, battery_compartments, max_arms;double weight_1, cost;
+int model_number;
+//battery_compartments, max_arms;
+double weight_1, cost;
 
 std::cout<<view.get_torso();
 std::cin>>battery_compartments>>max_arms>>name>>model_number>>cost>>description>>image_filename>>weight_1;
@@ -85,14 +133,40 @@ sales_associate=sales_associate_1;
 shop.create_new_sales_associate(sales_associate_1);
 }
 
+
 void Controller::controller_get_robot_model(){
 int model_num_1;
 std::cout<<view.get_model();std::cin>>model_num_1;
-Robot_model robot_model_1(arm,battery,head,locomotor,torso,model_num_1);
-//shop.create_new_robot_model(Robot_model(arm,battery,head,locomotor,torso));
-robot_model=robot_model_1;
-shop.create_new_robot_model(robot_model_1);
-//shop.list_models();
+if (max_arms == 1 && battery_compartments == 1) {
+	Robot_model robot_model_1(arm_1, battery_1, head, locomotor, torso, model_num_1);
+	robot_model = robot_model_1;
+	shop.create_new_robot_model(robot_model_1);
+}
+else if (max_arms == 1 && battery_compartments == 2) {
+	Robot_model robot_model_1(arm_1, battery_1, battery_2, battery_3, head, locomotor, torso, model_num_1);
+	robot_model = robot_model_1;
+	shop.create_new_robot_model(robot_model_1);
+}
+else if (max_arms == 1 && battery_compartments == 3) {
+	Robot_model robot_model_1(arm_1, battery_1, battery_2, battery_3,head, locomotor, torso, model_num_1);
+	robot_model = robot_model_1;
+	shop.create_new_robot_model(robot_model_1);
+}
+else if (max_arms == 2 && battery_compartments == 1) {
+	Robot_model robot_model_1(arm_1, arm_2, battery_1, head, locomotor, torso, model_num_1);
+	robot_model = robot_model_1;
+	shop.create_new_robot_model(robot_model_1);
+}
+else if (max_arms == 2 && battery_compartments == 2) {
+	Robot_model robot_model_1(arm_1, arm_2, battery_1, battery_2, head, locomotor, torso, model_num_1);
+	robot_model = robot_model_1;
+	shop.create_new_robot_model(robot_model_1);
+}
+else if (max_arms == 2 && battery_compartments == 3) {
+	Robot_model robot_model_1(arm_1, arm_2, battery_1, battery_2, battery_3, head, locomotor, torso, model_num_1);
+	robot_model = robot_model_1;
+	shop.create_new_robot_model(robot_model_1);
+}
 }
 
 void Controller::controller_get_order(){
@@ -118,10 +192,12 @@ execute_cmd(cmd);
 void Controller::execute_cmd(int cmd){
 
 if(cmd==1){
-/*Controller::controller_get_battery();
-Controller::controller_get_head();
-Controller::controller_get_locomotor();
+
 Controller::controller_get_torso();
+Controller::controller_get_arm();
+Controller::controller_get_battery();
+/*Controller::controller_get_head();
+Controller::controller_get_locomotor();
 Controller::controller_get_robot_model();*/
 }
 if(cmd==2){

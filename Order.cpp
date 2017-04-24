@@ -12,7 +12,7 @@ void Order::to_string(){
 //string order =
 std::cout << "Order Number: "<<std::to_string(order_number)<<std::endl<<"Order Status "<<std::to_string(status)<<std::endl<<"Date "<<date
 <<std::endl<<"Customer "<<customer.to_string()<<std::endl<<"Sales Associate "<<sales_associate.to_string()<<std::endl;
-robot_model_order.get_parts();
+//robot_model_order.get_parts(); FIX
 //return order;
 }
 

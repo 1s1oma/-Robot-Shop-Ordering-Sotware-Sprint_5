@@ -8,7 +8,7 @@ class Controller{
 public:
 //Controller(Shop& shop_o, View& view_o) : shop(shop_o),view(view_o){}
 Controller(Robot_model model, Arm arm_o, Battery battery_o, Head head_o, Locomotor locomotor_o, Torso torso_o, Shop& shop_o, View& view):
-robot_model(model), arm(arm_o), battery (battery_o), head(head_o), locomotor(locomotor_o), torso(torso_o), shop(shop_o), view(view){}
+robot_model(model), arm_1(arm_o), battery_1 (battery_o), head(head_o), locomotor(locomotor_o), torso(torso_o), shop(shop_o), view(view){}
 
 void cli();
 void execute_cmd(int cmd);
@@ -26,8 +26,8 @@ private:
 Shop& shop;
 View& view;
 Robot_model robot_model;
-Arm arm;
-Battery battery;
+Arm arm_1, arm_2;
+Battery battery_1, battery_2, battery_3;
 Head head;
 Locomotor locomotor;
 Torso torso;
