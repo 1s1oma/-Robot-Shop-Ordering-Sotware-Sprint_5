@@ -54,6 +54,13 @@ torso.view_parts();
 		locomotor.view_parts();
 		torso.view_parts();
 	}
+	else {
+		arm1.view_parts();
+		battery1.view_parts();
+		head.view_parts();
+		locomotor.view_parts();
+		torso.view_parts();
+	}
 }
 
 int Robot_model::get_model_num(){

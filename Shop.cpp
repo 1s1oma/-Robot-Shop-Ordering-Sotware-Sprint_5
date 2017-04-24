@@ -64,7 +64,7 @@ void Shop::list_models() {
 	std::cout << "Enter model number to view parts" << std::endl; std::cin >> num;
 	for (int i = 0; i < models.size(); i++) {
 		if (num == models[i].get_model_num()){}
-			//  models[i].get_parts(); FIX
+			  models[i].get_parts();
 	}
 }
 

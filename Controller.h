@@ -1,6 +1,10 @@
 #ifndef CONTROLLER_H_INCLUDED
 #define CONTROLLER_H_INCLUDED
-
+#include <Windows.h>
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Box.H>
+#include <FL/fl_ask.H>
 #include "Shop.h"
 #include "View.h"
 
